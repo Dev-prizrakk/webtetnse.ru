@@ -459,13 +459,13 @@
                 }
             }
         },
-        "/api/v1/blog": {
+        "/api/v1/blog/posts": {
             "get": {
                 "tags": [
                     "Blog"
                 ],
                 "summary": "Получить список всех постов блога",
-                "operationId": "5c0f0d2a855e6441442286ea4d916405",
+                "operationId": "ce18d84ce87b81dc74f50ffb56e975ef",
                 "responses": {
                     "200": {
                         "description": "Список постов",
@@ -487,7 +487,7 @@
                     "Blog"
                 ],
                 "summary": "Создать новый пост",
-                "operationId": "45b2d8aa26debfeae380bcae0183d103",
+                "operationId": "a0f3c7549c94f3c71af9e91020dfbcff",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -533,13 +533,13 @@
                 }
             }
         },
-        "/api/v1/blog/{id}": {
+        "/api/v1/blog/posts/{id}": {
             "get": {
                 "tags": [
                     "Blog"
                 ],
                 "summary": "Получить пост по ID и увеличить просмотры",
-                "operationId": "36603b0908f4a9e09203e78c28ac1957",
+                "operationId": "60536a14b502c2ce53cee7fca157e828",
                 "parameters": [
                     {
                         "name": "id",
@@ -572,7 +572,7 @@
                     "Blog"
                 ],
                 "summary": "Удалить пост",
-                "operationId": "909cb65dda25800948784a86c201aa3b",
+                "operationId": "62b83727ec4f3303bf5340389f934921",
                 "parameters": [
                     {
                         "name": "id",

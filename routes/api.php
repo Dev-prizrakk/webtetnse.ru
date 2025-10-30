@@ -31,7 +31,7 @@ Route::prefix('/v1/auth')->group(function () {
     Route::post('/email-verify', [EmailVerificationController::class, 'verify']);
 });
 
-Route::prefix('/v1/blog')->group(function () {
+Route::prefix('/v1/blog/posts')->group(function () {
     Route::get('/', [BlogController::class, 'index']);
     Route::get('/{id}', [BlogController::class, 'show']);
     Route::post('/', [BlogController::class, 'store']);

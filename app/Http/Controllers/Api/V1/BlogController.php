@@ -10,7 +10,7 @@ class BlogController extends Controller
 {
     /**
      * @OA\Get(
-     *     path="/api/v1/blog",
+     *     path="/api/v1/blog/posts",
      *     summary="Получить список всех постов блога",
      *     tags={"Blog"},
      *     @OA\Response(
@@ -27,7 +27,7 @@ class BlogController extends Controller
     }
     /**
      * @OA\Get(
-     *     path="/api/v1/blog/{id}",
+     *     path="/api/v1/blog/posts/{id}",
      *     summary="Получить пост по ID и увеличить просмотры",
      *     tags={"Blog"},
      *     @OA\Parameter(
@@ -54,7 +54,7 @@ class BlogController extends Controller
     }
     /**
      * @OA\Post(
-     *     path="/api/v1/blog",
+     *     path="/api/v1/blog/posts",
      *     summary="Создать новый пост",
      *     tags={"Blog"},
      *     @OA\RequestBody(
@@ -89,7 +89,7 @@ class BlogController extends Controller
 
     /**
      * @OA\Delete(
-     *     path="/api/v1/blog/{id}",
+     *     path="/api/v1/blog/posts/{id}",
      *     summary="Удалить пост",
      *     tags={"Blog"},
      *     @OA\Parameter(
