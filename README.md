@@ -33,7 +33,7 @@
 
 1. Клонируйте репозиторий:
    ```bash
-    git clone https://github.com/Dev-prizrakk/webtetnse.ru.git
+    git clone https://github.com/Dev-prizrakk/oauth.git
     cd webtetnse.ru
     ```
 2. Поднять докер контейнеры:
