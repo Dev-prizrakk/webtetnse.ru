@@ -36,23 +36,23 @@
     git clone https://github.com/Dev-prizrakk/webtetnse.ru.git
     cd webtetnse.ru
     ```
-2. Установите зависимости с помощью Composer:
+2. Поднять докер контейнеры:
+   ```bash
+   docker-compose up -d
+   ```
+3. Зайти в контейнер приложения:
+   ```bash
+   docker exec -it webtense_app bash
+   ```
+4. Установите зависимости с помощью Composer:
    ```bash
    composer install --no-dev
    ```
-3. Скопируйте файл окружения и настройте его:
+5. Скопируйте файл окружения и настройте его:
    ```bash
    cp .env.example .env
    ```
    Отредактируйте `.env`, указав настройки базы данных и другие параметры.
-4. Поднять докер контейнеры:
-   ```bash
-   docker-compose up -d
-   ```
-5. Зайти в контейнер приложения:
-   ```bash
-   docker exec -it webtense_app bash
-   ```
 6. Выполните миграции и сиды:
    ```bash
    php artisan migrate --seed
@@ -66,4 +66,4 @@
    ```
    http://localhost/api/v1/docs
    ```
-   
+
