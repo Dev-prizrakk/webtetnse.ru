@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  
+  app:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    image: laravel-app:dev
+    container_name: webtense-pp_app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+      - /var/www/html/vendor
+      - /var/www/html/node_modules
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - webtense-pp
+
+  web:
+    image: nginx:stable-alpine
+    container_name: webtense-pp_nginx
+    volumes:
+      - ./:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "8081:8081" # Traefik Dashboard
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.laravel.rule=Host(`localhost`)"
+      - "traefik.http.routers.laravel.entrypoints=web"
+      - "traefik.http.services.laravel.loadbalancer.server.port=80"
+    networks:
+      - webtense-pp
+
+  db:
+    image: postgres:15
+    container_name: webtense-pp_pg
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: laravel
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - webtense-pp
+
+volumes:
+  pgdata:
+
+networks:
+  webtense-pp:
+    driver: bridge

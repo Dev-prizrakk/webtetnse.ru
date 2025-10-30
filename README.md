@@ -1,0 +1,19 @@
+# Oauth - Система авторизации от новичка
+
+### Endpoint
+
+| Endpoint | Метод | Описание (опционально) |
+|----------|--------|------------------------|
+| /api/v1/auth/email-verify/{user} | POST | отправка ссылки для верификации |
+| /api/v1/auth/email-verify | POST | подтверждение верификации |
+| /api/v1/auth/password/forgot | POST | запрос на восстановление пароля |
+| /api/v1/auth/login | POST | авторизация |
+| /api/v1/auth/logout | DELETE | выход из аккаунта |
+| /api/v1/auth/me | GET | получение профиля пользователя |
+| /api/v1/auth/registration | POST | регистрация |
+| /api/v1/auth/password/reset | POST | сброс пароля |
+| /api/v1/auth/password/token-check | POST | проверка токена восстановления |
+
+### Ошибки
+- По какой-то причине докер медлено работает из-за чего на API сайта 419 Page Expiried
+- Функционал не тестирован

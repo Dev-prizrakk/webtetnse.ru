@@ -1,0 +1,895 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Нууу очень крутая апишка",
+        "description": "Документация для REST API Laravel",
+        "contact": {
+            "email": "support@example.com"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost/",
+            "description": "Локальный сервер разработки"
+        }
+    ],
+    "paths": {
+        "/api/v1/auth/registration": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Регистрация пользователя",
+                "operationId": "628a0714e9a4ed846ed1a311a6076eeb",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password",
+                                    "password_confirmation"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "user@example.com"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password123"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "example": "password123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Пользователь успешно зарегестрирован"
+                    },
+                    "422": {
+                        "description": "Неверные данные"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Авторизация пользователя",
+                "operationId": "9d0bb5c770cbec19b0b9566606ef4adb",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "password123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Успешный вход"
+                    },
+                    "401": {
+                        "description": "Неверные учетные данные"
+                    },
+                    "422": {
+                        "description": "Неверные данные"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/logout": {
+            "delete": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Выход пользователя",
+                "description": "Отзывает токен текущего пользователя и завершает сессию авторизации.",
+                "operationId": "9c11fea5b676e17442cb348406aefe9e",
+                "responses": {
+                    "200": {
+                        "description": "Выход выполнен успешно",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Выход выполнен успешно"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Пользователь не авторизован"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/auth/me": {
+            "get": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Получить информацию о текущем пользователе",
+                "description": "Возвращает данные авторизованного пользователя по токену.",
+                "operationId": "7edb820901b8b3a880fc4d7a0a7290fb",
+                "responses": {
+                    "200": {
+                        "description": "Информация о пользователе",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Иван Иванов"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "user@example.com"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-10-21T12:34:56Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Пользователь не авторизован"
+                    }
+                },
+                "security": [
+                    {
+                        "sanctum": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/auth/email-verify/{user}": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Отправить ссылку для подтверждения email",
+                "description": "Создает токен и возвращает ссылку для подтверждения email указанного пользователя.",
+                "operationId": "6a114565532c0f859a327041df493250",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "description": "ID пользователя",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ссылка создана успешно",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Ссылка для подтверждения email создана."
+                                        },
+                                        "verify_url": {
+                                            "type": "string",
+                                            "example": "http://localhost/api/v1/auth/email-verify?user=1&token=abc123"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Email уже подтверждён"
+                    },
+                    "404": {
+                        "description": "Пользователь не найден"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/email-verify": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Подтвердить email по токену",
+                "description": "Проверяет токен подтверждения email и устанавливает дату верификации.",
+                "operationId": "e40dc331738bbf2df00d8b621dc2d0e7",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "user",
+                                    "token"
+                                ],
+                                "properties": {
+                                    "user": {
+                                        "description": "ID пользователя",
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "token": {
+                                        "description": "Токен подтверждения email",
+                                        "type": "string",
+                                        "example": "abc123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Email успешно подтверждён"
+                    },
+                    "400": {
+                        "description": "Неверный или истёкший токен"
+                    },
+                    "404": {
+                        "description": "Запрос подтверждения не найден"
+                    },
+                    "422": {
+                        "description": "Ошибка валидации"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/password/forgot": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Создать токен для сброса пароля",
+                "description": "Генерирует токен для сброса пароля и возвращает его (в тестовых целях).",
+                "operationId": "69e3fe54a0bb102642b8c2d3245b47a8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@example.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ссылка для сброса пароля создана",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Ссылка для сброса пароля успешно создана."
+                                        },
+                                        "token": {
+                                            "type": "string",
+                                            "example": "abc123"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Неверные данные"
+                    },
+                    "404": {
+                        "description": "Пользователь не найден"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/password/token-check": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Проверить токен сброса пароля",
+                "description": "Проверяет, действителен ли токен, созданный для сброса пароля.",
+                "operationId": "d25d91b68d5be0883030f876429be6aa",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "token"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@example.com"
+                                    },
+                                    "token": {
+                                        "type": "string",
+                                        "example": "abc123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Токен действителен"
+                    },
+                    "400": {
+                        "description": "Неверный или истёкший токен"
+                    },
+                    "404": {
+                        "description": "Запрос не найден"
+                    },
+                    "422": {
+                        "description": "Ошибка валидации"
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/password/reset": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Сбросить пароль пользователя",
+                "description": "Позволяет задать новый пароль при наличии действительного токена.",
+                "operationId": "a34b01fa6648eadb2aad0e38c6bb36bc",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "token",
+                                    "password",
+                                    "password_confirmation"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@example.com"
+                                    },
+                                    "token": {
+                                        "type": "string",
+                                        "example": "abc123"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "newPassword123"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "example": "newPassword123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Пароль успешно обновлён"
+                    },
+                    "400": {
+                        "description": "Неверный токен или email"
+                    },
+                    "422": {
+                        "description": "Ошибка валидации"
+                    }
+                }
+            }
+        },
+        "/api/v1/blog": {
+            "get": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Получить список всех постов блога",
+                "operationId": "5c0f0d2a855e6441442286ea4d916405",
+                "responses": {
+                    "200": {
+                        "description": "Список постов",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/BlogPost"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Создать новый пост",
+                "operationId": "45b2d8aa26debfeae380bcae0183d103",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "body"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Новый пост"
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "example": "Контент поста"
+                                    },
+                                    "footer": {
+                                        "type": "string",
+                                        "example": "Автор: Алексей"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Пост успешно создан",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BlogPost"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Ошибка валидации"
+                    }
+                }
+            }
+        },
+        "/api/v1/blog/{id}": {
+            "get": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Получить пост по ID и увеличить просмотры",
+                "operationId": "36603b0908f4a9e09203e78c28ac1957",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID поста",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Информация о посте",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BlogPost"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Пост не найден"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Blog"
+                ],
+                "summary": "Удалить пост",
+                "operationId": "909cb65dda25800948784a86c201aa3b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID поста",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Пост удалён"
+                    },
+                    "404": {
+                        "description": "Пост не найден"
+                    }
+                }
+            }
+        },
+        "/api/v1/requests": {
+            "get": {
+                "tags": [
+                    "Requests"
+                ],
+                "summary": "Получить список всех заявок",
+                "operationId": "e8ba1b0f112480d4aad0b1360cb1a20a",
+                "responses": {
+                    "200": {
+                        "description": "Список заявок",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Request"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Requests"
+                ],
+                "summary": "Создать новую заявку",
+                "operationId": "927dd34168a9440882d2d9d4aea3091e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "category",
+                                    "name",
+                                    "phone"
+                                ],
+                                "properties": {
+                                    "category": {
+                                        "type": "string",
+                                        "enum": [
+                                            "estimate",
+                                            "development",
+                                            "callback"
+                                        ],
+                                        "example": "estimate"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Александр"
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "+79995553322"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Описание запроса"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Заявка успешно создана",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Request"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Ошибка валидации"
+                    }
+                }
+            }
+        },
+        "/api/v1/requests/{id}": {
+            "get": {
+                "tags": [
+                    "Requests"
+                ],
+                "summary": "Получить заявку по ID",
+                "operationId": "ccb3309007cab7ed5d86ecc7c17cb037",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID заявки",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Информация о заявке",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Request"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Заявка не найдена"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Requests"
+                ],
+                "summary": "Удалить заявку",
+                "operationId": "43c0f1596e3306070bad8ecc641774f8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID заявки",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Заявка удалена"
+                    },
+                    "404": {
+                        "description": "Заявка не найдена"
+                    }
+                }
+            }
+        },
+        "/api/v1/requests/{id}/status": {
+            "patch": {
+                "tags": [
+                    "Requests"
+                ],
+                "summary": "Обновить статус заявки",
+                "operationId": "7aac3f26c2c6ab5634ed051413ce2264",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID заявки",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "status"
+                                ],
+                                "properties": {
+                                    "status": {
+                                        "type": "string",
+                                        "enum": [
+                                            "new",
+                                            "in_progress",
+                                            "review",
+                                            "done"
+                                        ],
+                                        "example": "done"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Статус обновлён"
+                    },
+                    "404": {
+                        "description": "Заявка не найдена"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "BlogPost": {
+                "title": "BlogPost",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Пример поста"
+                    },
+                    "body": {
+                        "type": "string",
+                        "example": "Содержимое поста"
+                    },
+                    "footer": {
+                        "type": "string",
+                        "example": "Автор: Алексей"
+                    },
+                    "views": {
+                        "type": "integer",
+                        "example": 15
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Request": {
+                "title": "Request",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": [
+                            "estimate",
+                            "development",
+                            "callback"
+                        ]
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Иван"
+                    },
+                    "phone": {
+                        "type": "string",
+                        "example": "+79995553322"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Описание заявки"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "new",
+                            "in_progress",
+                            "review",
+                            "done"
+                        ]
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Authentication",
+            "description": "Authentication"
+        },
+        {
+            "name": "Blog",
+            "description": "Blog"
+        },
+        {
+            "name": "Requests",
+            "description": "Requests"
+        }
+    ]
+}
