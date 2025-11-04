@@ -1,0 +1,22 @@
+/* === MEDIA QUERIES === */
+@media (max-width:900px) {
+    .hero__inner,
+    .booklet__wrap,
+    .header__wrap {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .services__list,
+    .portfolio__grid,
+    .blog__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width:768px) {
+    .nav ul {
+        justify-content: center;
+        gap: 15px;
+    }
+}

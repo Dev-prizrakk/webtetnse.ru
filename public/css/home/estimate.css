@@ -1,0 +1,104 @@
+/* === ESTIMATE / FORM === */
+.estimate {
+    padding: 48px 0;
+}
+
+.estimate__wrap {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    position: relative;
+    background-color: #F3F4F9;
+    border-radius: 20px;
+    padding: 36px;
+}
+
+.estimate__left {
+    flex: 1 1 55%;
+    background: #F3F4F9;
+    padding: 36px;
+    border-radius: 20px;
+}
+
+.estimate__left h2 {
+    font-size: 34px;
+    color: #171718;
+    margin-bottom: 12px;
+}
+
+.estimate__services {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.tag {
+    padding: 12px 18px;
+    border-radius: 8px;
+    border: 1px solid #6B2BE7;
+    background: #fff;
+    color: #171718;
+    font-weight: 500;
+}
+
+.tag.active {
+    background: #6B2BE7;
+    color: #fff;
+    border-color: #6B2BE7;
+}
+
+.two-cols {
+    display: flex;
+    gap: 16px;
+}
+
+.estimate input,
+.estimate textarea {
+    width: 50%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid #E4E5EC;
+    font-size: 13px;
+    resize: none;
+}
+
+.estimate label {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #171718;
+}
+
+.estimate__submit {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.small-note,
+.hint,
+.small {
+    font-size: 12px;
+    color: #6D6F73;
+}
+
+/* right decoration */
+.estimate__right {
+    flex: 0 0 40%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.estimate__right img {
+    max-width: 100%;
+    transform: rotate(-60deg);
+    pointer-events: none;
+}

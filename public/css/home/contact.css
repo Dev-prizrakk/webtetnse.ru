@@ -1,0 +1,145 @@
+/* === CONTACT === */
+.contact {
+    background: #171718;
+    color: #fff;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.contact__text {
+    flex: 1 1 100%;
+    max-width: 700px;
+}
+
+.contact__text h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.contact__text p {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.9;
+    color: #ffffff;
+    margin-bottom: 30px;
+}
+
+.contact__form {
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1 1 calc(33.333% - 15px);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group.full {
+    flex: 1 1 100%;
+}
+
+label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: #ffffff;
+}
+
+input,
+textarea {
+    box-sizing: border-box;
+    background: #ffffff;
+    border: 1px solid #E4E5EC;
+    border-radius: 5px 40px 5px 5px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    padding: 14px 18px;
+    color: #171718;
+    outline: none;
+}
+
+textarea {
+    min-height: 90px;
+    resize: none;
+}
+
+.btn {
+    background: #6B2BE7;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 18px 40px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #7B3FF2;
+}
+
+.agreement {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    color: #FFFFFF;
+    max-width: 380px;
+}
+
+.agreement a {
+    color: #BB64FF;
+    text-decoration: none;
+}
+
+.agreement a:hover {
+    text-decoration: underline;
+}
+
+.form-bottom {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.contact__image {
+    flex: 1 1 30%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.contact__image img {
+    width: 100%;
+    max-width: 430px;
+    height: auto;
+    object-fit: contain;
+}

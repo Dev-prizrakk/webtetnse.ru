@@ -1,0 +1,44 @@
+/* === BUTTONS === */
+.btn,
+.btn-gradient {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+    text-decoration: none;
+}
+
+.btn {
+    background: #7B3FF2;
+    color: #fff;
+}
+
+.btn:hover {
+    background: #5A2EE5;
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    color: #7B3FF2;
+    border: 2px solid #7B3FF2;
+}
+
+.btn-outline:hover {
+    background: #7B3FF2;
+    color: #fff;
+}
+
+.btn-primary,
+.btn-gradient {
+    background: linear-gradient(90deg, #5625DF 7.55%, #A93AFF 100%);
+    color: #fff;
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #fff;
+}

@@ -1,0 +1,137 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #171718;
+    color: #fff;
+}
+
+/* Header */
+header {
+    position: relative;
+    width: 100%;
+    background: #1A1A1A;
+    border-bottom: 1px solid rgba(112, 112, 112, 0.35);
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 16px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li svg {
+    margin-left: 5px;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    background: #1A1A1A;
+    border-radius: 0 0 30px 30px;
+    padding: 150px 20px 50px 20px;
+}
+
+.hero h1 {
+    font-size: 55px;
+    font-weight: 500;
+    line-height: 70px;
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 35px;
+    max-width: 780px;
+    margin-bottom: 40px;
+}
+
+.hero .links {
+    display: flex;
+    gap: 95px;
+}
+
+.hero .links a {
+    font-weight: 500;
+    font-size: 23px;
+    line-height: 34px;
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Contact Buttons */
+.contact-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.contact-buttons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: #242424;
+    border: 1px solid #2B2B2B;
+    border-radius: 40px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 'images/background.png';
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* чтобы контент был поверх */
+}
+
+.hero > * {
+  position: relative; /* чтобы контент был поверх фона */
+  z-index: 1;
+  padding: 0 20px; /* отступы контента */
+  max-width: 1200px;
+  margin: 0 auto;
+}

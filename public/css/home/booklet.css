@@ -1,0 +1,37 @@
+/* === BOOKLET === */
+.booklet {
+    padding: 80px 0;
+    border-radius: 30px;
+    background: linear-gradient(269.82deg, #4C2A79 0.18%, #030534 36.92%);
+}
+
+.booklet__wrap {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.booklet__left {
+    flex: 1;
+    color: #fff;
+}
+
+.booklet__left h2 {
+    font-size: 34.7px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.booklet__left .accent {
+    color: #F6F173;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.booklet__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 12px;
+}

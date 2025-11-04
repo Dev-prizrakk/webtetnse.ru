@@ -1,0 +1,133 @@
+/* === BLOG === */
+.blog {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.blog__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.blog__header h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: #171718;
+}
+
+.blog__link {
+    border: 1px solid #6B2BE7;
+    border-radius: 10px;
+    padding: 15px 35px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #6B2BE7;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.blog__link:hover {
+    background: #6B2BE7;
+    color: #fff;
+}
+
+.blog__grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.blog__card {
+    background: #F3F4F9;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 390px;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog__card img {
+    width: 100%;
+    height: 168px;
+    object-fit: cover;
+}
+
+.blog__content {
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.blog__content h3 {
+    font-size: 17px;
+    color: #171718;
+    margin-bottom: 5px;
+}
+
+.blog__meta {
+    font-size: 14px;
+    color: rgba(23,23,24,0.6);
+}
+
+.blog__author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.blog__author img {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+}
+
+.blog__stats {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: rgba(23,23,24,0.6);
+}
+
+.blog__stats img {
+    width: 16px;
+    height: 13px;
+    margin-right: 4px;
+}
+
+.blog__tags {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.blog__tags a {
+    font-size: 14px;
+    color: #6B2BE7;
+    text-decoration: none;
+}
+
+.blog__tags a:hover {
+    text-decoration: underline;
+}
+
+/* Адаптив */
+@media (max-width:1200px) {
+    .blog__grid {
+        justify-content: center;
+    }
+}
+
+@media (max-width:768px) {
+    .blog__card {
+        width: 100%;
+    }
+}

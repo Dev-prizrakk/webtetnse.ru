@@ -1,0 +1,29 @@
+/* === COMPANY / FACTS === */
+.company {
+    padding: 64px 0;
+    background: #fafafa;
+    text-align: left;
+}
+
+.facts {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+.fact {
+    flex: 1;
+}
+
+.fact .num {
+    font-size: 59px;
+    color: #6B2BE7;
+    font-weight: 700;
+}
+
+.fact .label {
+    color: #171718;
+    font-size: 16px;
+}
